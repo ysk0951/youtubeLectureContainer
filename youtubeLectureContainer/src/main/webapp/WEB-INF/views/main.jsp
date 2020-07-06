@@ -12,14 +12,20 @@
 
 </head>
 <body> 
-<h1 align="center">Main New Main</h1>
+<h1 align="center">	YOUTUBE LECTURE CONTAINER </h1>
 <table>
 	<tr>
 		<td>
-			Main 
+			LIST
+		</td>
+		<td>
+			STREAM
 		</td>
 	</tr>
 	<tr>
+		<td>
+			MY LIST 
+		</td>
 		<td>
 			<img src="/ylc/resources/css/java.png">
 		</td>

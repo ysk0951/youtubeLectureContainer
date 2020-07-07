@@ -15,7 +15,9 @@
 <h1 align="center">	YOUTUBE LECTURE CONTAINER </h1><br/>
 <h1 align="center">	https://joypinkgom.tistory.com/27?category=874360</h1><br/>
 <!--
-	Client ID : 367885708496-7k6krrhjvjllf4laco4u3abdm4atjmmt.apps.googleusercontent.com
+	관리 탭 : https://console.cloud.google.com/apis/credentials?project=youtubelecturecontainer
+	라이브러리 도큐먼트 : https://developers.google.com/api-client-library/java/google-api-java-client/oauth2
+	
 -->
 <table>
 	<tr>

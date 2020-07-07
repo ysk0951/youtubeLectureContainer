@@ -12,7 +12,8 @@
 
 </head>
 <body> 
-<h1 align="center">	YOUTUBE LECTURE CONTAINER </h1>
+<h1 align="center">	YOUTUBE LECTURE CONTAINER </h1><br/>
+<h1 align="center">	https://joypinkgom.tistory.com/27?category=874360</h1><br/>
 <table>
 	<tr>
 		<td>

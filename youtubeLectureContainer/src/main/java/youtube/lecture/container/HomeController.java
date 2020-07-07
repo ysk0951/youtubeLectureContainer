@@ -26,6 +26,15 @@ public class HomeController {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
+		
+		//googleAPI OAuth2.0 Security
+		
+		
+		
+		
+		
+		
+		
 		model.addAttribute("serverTime", formattedDate );
 		return "main";
 	}

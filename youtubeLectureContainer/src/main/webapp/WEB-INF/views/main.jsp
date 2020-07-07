@@ -14,10 +14,10 @@
 <body> 
 <h1 align="center">	YOUTUBE LECTURE CONTAINER </h1><br/>
 <h1 align="center">	https://joypinkgom.tistory.com/27?category=874360</h1><br/>
+<h1 align="center">	https://gdtbgl93.tistory.com/73</h1><br/>
 <!--
 	관리 탭 : https://console.cloud.google.com/apis/credentials?project=youtubelecturecontainer
 	라이브러리 도큐먼트 : https://developers.google.com/api-client-library/java/google-api-java-client/oauth2
-	
 -->
 <table>
 	<tr>

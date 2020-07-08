@@ -4,20 +4,31 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.google.connect.GoogleOAuth2Template;
+import org.springframework.social.oauth1.OAuth1Parameters;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import youtube.lecture.container.vo.AuthInfo;
+
 @Controller
 public class HomeController {
-	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+	@Inject
+	private AuthInfo authInfo;
+	@Autowired
+	private GoogleOAuth2Template googleoAuth2Template;
+	@Autowired
+	private OAuth2Parameters oAuth2Parameters;
 	//main
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -28,23 +39,6 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		//googleAPI OAuth2.0 Security
-		
-		
-		
-//		Token already 
-//		String accessToken = "";
-//		GoogleCredential credential = new GoogleCredential().setAccessToken(accessToken);
-//		Plus plus = new Plus.builder(new NetHttpTransport(),
-//		                             JacksonFactory.getDefaultInstance(),
-//		                             credential)
-//		    .setApplicationName("Google-PlusSample/1.0")
-//		    .build();
-		
-		
-		
-		
-		
-		
 		
 		model.addAttribute("serverTime", formattedDate );
 		return "main";

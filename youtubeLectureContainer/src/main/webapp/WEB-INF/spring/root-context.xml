@@ -16,7 +16,7 @@
         <property name="scope" value="profile"></property>
         <property name="redirectUri" value="http://localhost:3000/google/googleSignInCallback" />
     </bean>
-    <bean id="authInfo" class="com.google.test.AuthInfo">
+    <bean id="authInfo" class="youtube.lecture.container.vo.AuthInfo">
         <constructor-arg value="Your Client Id" />
         <constructor-arg value="Your Client Secret" />
     </bean>

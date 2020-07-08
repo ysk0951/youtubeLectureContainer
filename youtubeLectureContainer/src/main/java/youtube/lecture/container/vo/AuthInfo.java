@@ -1,5 +1,6 @@
 package youtube.lecture.container.vo;
 
+
 public class AuthInfo {
 	private String clientId;
 	private String clientPw;

@@ -18,6 +18,7 @@
 <!--
 	관리 탭 : https://console.cloud.google.com/apis/credentials?project=youtubelecturecontainer
 	라이브러리 도큐먼트 : https://developers.google.com/api-client-library/java/google-api-java-client/oauth2
+	Google OAuto 관련 : https://gdtbgl93.tistory.com/73
 -->
 <table>
 	<tr>

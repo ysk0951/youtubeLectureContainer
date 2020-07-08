@@ -38,6 +38,9 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		
+		System.out.println("authInfo : "+authInfo);
+		System.out.println("googleoAuth2Template : "+googleoAuth2Template);
+		System.out.println("oAuth2Parameters : "+oAuth2Parameters);
 		//googleAPI OAuth2.0 Security
 		
 		model.addAttribute("serverTime", formattedDate );

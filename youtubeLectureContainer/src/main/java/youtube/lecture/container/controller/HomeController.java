@@ -53,12 +53,12 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		//googleAPI OAuth2.0 Security
-		System.out.println("authInfo : "+authInfo);
-		System.out.println("googleoAuth2Template : "+googleOAuth2Template);
-		System.out.println("oAuth2Parameters : "+googleOAuth2Parameters);
+		System.out.println("[authInfo : "+authInfo+"]");
+		System.out.println("[googleoAuth2Template : "+googleOAuth2Template+"]");
+		System.out.println("[oAuth2Parameters : "+googleOAuth2Parameters+"]");
 		
 		String url = googleOAuth2Template.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-		System.out.println("/googleLogin, url : " + url);
+		System.out.println("[/googleLogin, url : " + url+"]");
         model.addAttribute("google_url", url);
 		model.addAttribute("serverTime", formattedDate );
 		

@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 
 import youtube.lecture.container.vo.AuthInfo;
 
@@ -43,6 +44,19 @@ public class HomeController {
 	private GoogleOAuth2Template googleOAuth2Template;
 	@Autowired
 	private OAuth2Parameters googleOAuth2Parameters;
+
+	//App Engine identity Urlshortener ClassNotFound
+	//추후 공부 필요
+//	private static Urlshortener newUrlshortener() {
+//		  AppIdentityCredential credential =
+//		      new AppIdentityCredential(
+//		          Collections.singletonList(UrlshortenerScopes.URLSHORTENER));
+//		  return new Urlshortener.Builder(new UrlFetchTransport(),
+//		                                  JacksonFactory.getDefaultInstance(),
+//		                                  credential)
+//		      .build();
+//		}
+	
 	//main
 	@RequestMapping(value = "/", method = {RequestMethod.GET , RequestMethod.POST})
 	public String join(Locale locale, Model model) {
@@ -56,7 +70,6 @@ public class HomeController {
 		System.out.println("[authInfo : "+authInfo+"]");
 		System.out.println("[googleoAuth2Template : "+googleOAuth2Template+"]");
 		System.out.println("[oAuth2Parameters : "+googleOAuth2Parameters+"]");
-		
 		String url = googleOAuth2Template.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
 		System.out.println("[/googleLogin, url : " + url+"]");
         model.addAttribute("google_url", url);

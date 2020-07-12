@@ -4,5 +4,20 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<!-- Google 소셜 로그인 연결 설정 -->
+    <bean id="googleOAuth2Template"
+        class="org.springframework.social.google.connect.GoogleOAuth2Template">
+        <constructor-arg
+            value="367885708496-7k6krrhjvjllf4laco4u3abdm4atjmmt.apps.googleusercontent.com" />
+        <constructor-arg value="Your Client Secret" />
+    </bean>
+    <bean id="googleOAuth2Parameters"
+        class="org.springframework.social.oauth2.OAuth2Parameters">
+        <property name="scope" value="profile"></property>
+        <property name="redirectUri" value="http://localhost:3000/google/googleSignInCallback" />
+    </bean>
+    <bean id="authInfo" class="youtube.lecture.container.vo.AuthInfo">
+        <constructor-arg value="Your Client Id" />
+        <constructor-arg value="Your Client Secret" />
+    </bean>
 </beans>

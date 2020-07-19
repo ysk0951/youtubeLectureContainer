@@ -34,7 +34,7 @@
 	<beans:bean id ="googleRedirectUrl" class="java.lang.String">
 		<beans:constructor-arg value="http://localhost:8080/auth/google/callback" />	
 	</beans:bean>
-	<beans:bean id="googleSns" class="youtube.lecture.container.vo.GoogleSns">
+	<beans:bean id="googleSns" class="youtube.lecture.container.vo.SnsValue">
 		<beans:constructor-arg value="google" />
 		<beans:constructor-arg ref="googleClientID"/>
 		<beans:constructor-arg ref="googleClientSecret"/>

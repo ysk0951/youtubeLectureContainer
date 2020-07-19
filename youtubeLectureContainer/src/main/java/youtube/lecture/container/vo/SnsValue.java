@@ -9,6 +9,11 @@ public class SnsValue {
 	private String clientID;
 	private String clientSecret;
 	private String rdirectUrl;
-	
-	
+	public SnsValue(String service, String clientID, String clientSecret, String rdirectUrl) {
+		super();
+		this.service = service;
+		this.clientID = clientID;
+		this.clientSecret = clientSecret;
+		this.rdirectUrl = rdirectUrl;
+	}
 }

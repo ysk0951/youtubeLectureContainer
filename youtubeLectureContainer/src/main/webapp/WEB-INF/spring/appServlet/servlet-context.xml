@@ -24,6 +24,20 @@
 	
 	<context:component-scan base-package="youtube.lecture.container" />
 	
-	
-	
+	<!--0AuthGoogle -->
+	<beans:bean id ="googleClientID" class="java.lang.String">
+		<beans:constructor-arg value="367885708496-3kfcb8mm0k7c0n1cra2sfbntt9jqvpur.apps.googleusercontent.com" />	
+	</beans:bean>
+	<beans:bean id ="googleClientSecret" class="java.lang.String">
+		<beans:constructor-arg value="EqE-nv5w-HNOeN27nH5LGaiK" />	
+	</beans:bean>
+	<beans:bean id ="googleRedirectUrl" class="java.lang.String">
+		<beans:constructor-arg value="http://localhost:8080/auth/google/callback" />	
+	</beans:bean>
+	<beans:bean id="googleSns" class="youtube.lecture.container.vo.GoogleSns">
+		<beans:constructor-arg value="google" />
+		<beans:constructor-arg ref="googleClientID"/>
+		<beans:constructor-arg ref="googleClientSecret"/>
+		<beans:constructor-arg ref="googleRedirectUrl"/>
+	</beans:bean>
 </beans:beans>

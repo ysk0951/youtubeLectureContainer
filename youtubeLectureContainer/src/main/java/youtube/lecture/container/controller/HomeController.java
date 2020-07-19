@@ -56,7 +56,6 @@ public class HomeController {
 //		                                  credential)
 //		      .build();
 //		}
-	
 	//main
 	@RequestMapping(value = "/", method = {RequestMethod.GET , RequestMethod.POST})
 	public String join(Locale locale, Model model) {

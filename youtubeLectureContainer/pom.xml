@@ -15,12 +15,23 @@
 	</properties>
 	<dependencies>
 	<!--GoogleAPI -->
-		<!--Blog-->
+		<!--0Auth2.0-->
 		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-google</artifactId>
-			<version>1.0.0.RELEASE</version>
+		    <groupId>com.github.scribejava</groupId>
+		    <artifactId>scribejava-apis</artifactId>
+		    <version>5.6.0</version>
 		</dependency>
+		<dependency>
+		    <groupId>com.github.scribejava</groupId>
+		    <artifactId>scribejava-core</artifactId>
+		    <version>5.6.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-google</artifactId>
+		    <version>1.0.0.RELEASE</version>
+		</dependency>
+		<!--  -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>

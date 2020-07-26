@@ -18,6 +18,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.social.google.api.oauth2.OAuth2Operations;
 import org.springframework.social.google.connect.GoogleOAuth2Template;
 import org.springframework.social.oauth1.OAuth1Parameters;
 import org.springframework.social.oauth2.GrantType;
@@ -32,8 +33,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.common.util.concurrent.ExecutionError;
 
 import youtube.lecture.container.vo.AuthInfo;
+import youtube.lecture.container.vo.SnsValue;
 
 @Controller
 public class HomeController {
@@ -45,6 +48,11 @@ public class HomeController {
 	@Autowired
 	private OAuth2Parameters googleOAuth2Parameters;
 
+	@Inject
+	private SnsValue naverSns;
+	@Inject
+	private SnsValue googleSns;
+	
 	//App Engine identity Urlshortener ClassNotFound
 	//추후 공부 필요
 //	private static Urlshortener newUrlshortener() {
@@ -126,4 +134,17 @@ public class HomeController {
 			return "error";
 		} 
 	
+		//senior coding 38:39
+		@RequestMapping(value = "/login", method = RequestMethod.GET)
+		public void login(Model model) throws Exception{
+			logger.info("login GET ... ");
+			
+			//naver
+			SNSLogin snsLogin = new SNSLogin();
+			//model.addAttribute("naver_url", snsLogin.getNaverAuthUrl());
+			
+			//OAuth2Operations oau
+			
+			
+		}
 }

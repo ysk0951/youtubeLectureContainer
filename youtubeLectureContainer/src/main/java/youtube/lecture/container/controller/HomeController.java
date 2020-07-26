@@ -36,6 +36,7 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.common.util.concurrent.ExecutionError;
 
 import youtube.lecture.container.vo.AuthInfo;
+import youtube.lecture.container.vo.SNSLogin;
 import youtube.lecture.container.vo.SnsValue;
 
 @Controller

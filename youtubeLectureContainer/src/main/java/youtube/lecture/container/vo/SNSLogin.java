@@ -11,7 +11,7 @@ public class SNSLogin {
 				.apiSecret(sns.getClientSecret())
 				.callback(sns.getRdirectUrl())
 				.scope("profile")
-				.build(api)
+				.build(this.oauthService);
 	};
 	
 	public String getNaverAuthURL() {

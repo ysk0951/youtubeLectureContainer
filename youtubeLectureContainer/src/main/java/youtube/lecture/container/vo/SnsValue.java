@@ -1,8 +1,6 @@
 package youtube.lecture.container.vo;
 
-
-import org.springframework.util.StringUtils;
-
+import org.apache.commons.lang3.StringUtils;
 import com.github.scribejava.core.builder.api.DefaultApi20;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 
@@ -21,7 +19,7 @@ public class SnsValue implements SnsUrls{
 		this.clientID = clientID;
 		this.clientSecret = clientSecret;
 		this.rdirectUrl = rdirectUrl;
-		if(StringUtils) {
+		if(StringUtils.equalsIgnoreCase(str1, str2)) {
 			
 		}
 	}

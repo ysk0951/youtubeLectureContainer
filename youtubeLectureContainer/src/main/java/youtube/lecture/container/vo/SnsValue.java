@@ -1,6 +1,8 @@
 package youtube.lecture.container.vo;
 
 import org.apache.commons.lang3.StringUtils;
+
+import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.api.DefaultApi20;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 
@@ -19,8 +21,10 @@ public class SnsValue implements SnsUrls{
 		this.clientID = clientID;
 		this.clientSecret = clientSecret;
 		this.rdirectUrl = rdirectUrl;
-		if(StringUtils.equalsIgnoreCase(str1, str2)) {
-			
+		if(StringUtils.equalsIgnoreCase(service, "naver")) {
+			this.api20Instance = NaverAPI20.getInstance();
+		}else if(StringUtils.equalsIgnoreCase(service, "google")) {
+			this.api20Instance = GoogleApi20.instance();
 		}
 	}
 	public String getService() {

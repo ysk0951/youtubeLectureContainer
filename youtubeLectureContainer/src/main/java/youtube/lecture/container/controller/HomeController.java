@@ -18,11 +18,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.social.google.api.oauth2.OAuth2Operations;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.google.connect.GoogleOAuth2Template;
 import org.springframework.social.oauth1.OAuth1Parameters;
 import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,7 +52,7 @@ public class HomeController {
 	@Inject
 	private GoogleConnectionFactory googleConnectionFactory;
 	@Inject
-	private OAuth2Parameters oauth2parameters;
+	private OAuth2Parameters googleOauth2parameters;
 	
 	//App Engine identity Urlshortener ClassNotFound
 	//추후 공부 필요
@@ -139,6 +139,7 @@ public class HomeController {
 		//model.addAttribute("google_url", googleLogin.getGoogleAuthURL());
 		
 		//goole 다른방식
-		OAuth2Operations oauthOperations = (OAuth2Operations) googleConnectionFactory.getOAuthOperations();
+		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+		oauthOperations.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOauth2parameters);
 	}
 }

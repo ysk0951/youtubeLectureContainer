@@ -6,8 +6,6 @@ import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.api.DefaultApi20;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 
-
-
 public class SnsValue implements SnsUrls{
 
 	private String service;
@@ -41,6 +39,12 @@ public class SnsValue implements SnsUrls{
 	}
 	public String getClientSecret() {
 		return clientSecret;
+	}
+	public DefaultApi20 getApi20Instance() {
+		return api20Instance;
+	}
+	public void setApi20Instance(DefaultApi20 api20Instance) {
+		this.api20Instance = api20Instance;
 	}
 	public void setClientSecret(String clientSecret) {
 		this.clientSecret = clientSecret;

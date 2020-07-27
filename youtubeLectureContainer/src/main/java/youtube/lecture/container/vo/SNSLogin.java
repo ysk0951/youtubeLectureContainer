@@ -11,10 +11,8 @@ public class SNSLogin {
 	private OAuth20Service oauthService;
 	private String profileUrl;
 	private SnsValue sns;
-	
-
 	//Api instanceSetting
-	//scribe Java
+	//scribe Java 
 	public SNSLogin(SnsValue sns) {
 		this.oauthService = new ServiceBuilder(sns.getClientID())
 				.apiSecret(sns.getClientSecret())

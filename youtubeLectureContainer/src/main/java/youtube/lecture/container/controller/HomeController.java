@@ -53,30 +53,26 @@ public class HomeController {
 		return "error";
 	} 
 	
-	//senior coding 38:39
+	//senior coding 1 : 07 : 04
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) throws Exception{
 		logger.info("login GET ... ");
-		
 		//naver
 		SNSLogin naverLogin = new SNSLogin(naverSns);
 		model.addAttribute("naver_url", naverLogin.getNaverAuthURL());
-
 		//google-scribeJava
-			//SNSLogin googleLogin = new SNSLogin(googleSns);
-			//model.addAttribute("google_url", googleLogin.getGoogleAuthURL());
+		//SNSLogin googleLogin = new SNSLogin(googleSns);
+		//model.addAttribute("google_url", googleLogin.getGoogleAuthURL());
 		//goole 다른방식
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		String url = oauthOperations.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOauth2parameters);
 		model.addAttribute("google_url", url);
-		
 		return "main";
 	} 
 	
 	@RequestMapping(value = "/auth/google/callback",
 			method = {RequestMethod.GET ,RequestMethod.POST})
 	public String snsLoginCallback(Model model,@RequestParam String code) throws Exception{
-		
 		
 		//1. code를 이용해서 access_token 받기
 		//2. access_token이용해서 사용자 profile가져오기

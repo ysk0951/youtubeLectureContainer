@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import youtube.lecture.container.vo.SNSLogin;
 import youtube.lecture.container.vo.SnsValue;
 
@@ -65,8 +67,27 @@ public class HomeController {
 			//model.addAttribute("google_url", googleLogin.getGoogleAuthURL());
 		//goole 다른방식
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		oauthOperations.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOauth2parameters);
+		String url = oauthOperations.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOauth2parameters);
+		model.addAttribute("google_url", url);
 		
 		return "main";
+	}
+	
+	@RequestMapping(value = "/auth/google/callback",
+			method = {RequestMethod.GET ,RequestMethod.POST})
+	public String snsLoginCallback(Model model,@RequestParam String code) throws Exception{
+		
+		
+		//1. code를 이용해서 access_token 받기
+		//2. access_token이용해서 사용자 profile가져오기
+		SNSLogin snsLogin = new SNSLogin(googleSns);
+		String profile = snsLogin.getUserProfile(code);
+		System.out.println("profile >>" + profile);
+		model.addAttribute("result", profile);
+		
+		//3. DB Check
+		//4. 강제 로그인
+		
+		return "loginResult";
 	}
 }

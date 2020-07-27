@@ -13,6 +13,8 @@ public class SnsValue implements SnsUrls{
 	private String clientSecret;
 	private String rdirectUrl;
 	private DefaultApi20 api20Instance;
+	private String profileUrl;
+	
 	public SnsValue(String service, String clientID, String clientSecret, String rdirectUrl) {
 		super();
 		this.service = service;
@@ -21,8 +23,10 @@ public class SnsValue implements SnsUrls{
 		this.rdirectUrl = rdirectUrl;
 		if(StringUtils.equalsIgnoreCase(service, "naver")) {
 			this.api20Instance = NaverAPI20.getInstance();
+			this.profileUrl = "";
 		}else if(StringUtils.equalsIgnoreCase(service, "google")) {
 			this.api20Instance = GoogleApi20.instance();
+			this.profileUrl = GOOGLE_PROFILE_URL;
 		}
 	}
 	public String getService() {
@@ -54,6 +58,12 @@ public class SnsValue implements SnsUrls{
 	}
 	public void setRdirectUrl(String rdirectUrl) {
 		this.rdirectUrl = rdirectUrl;
+	}
+	public String getProfileUrl() {
+		return profileUrl;
+	}
+	public void setProfileUrl(String profileUrl) {
+		this.profileUrl = profileUrl;
 	}
 	
 }

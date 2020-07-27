@@ -10,6 +10,7 @@ import com.github.scribejava.core.oauth.OAuth20Service;
 public class SNSLogin {
 	private OAuth20Service oauthService;
 	private String profileUrl;
+	private SnsValue sns;
 	
 
 	//Api instanceSetting
@@ -20,10 +21,8 @@ public class SNSLogin {
 				.callback(sns.getRdirectUrl())
 				.scope("profile")
 				.build(sns.getApi20Instance());
-		
-		this.profileUrl = sns.getProfileUrl();
-		
-	};
+		this.sns = sns;
+	}
 	public String getNaverAuthURL() {
 		return this.oauthService.getAuthorizationUrl();
 	}

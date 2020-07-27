@@ -71,7 +71,7 @@ public class HomeController {
 		model.addAttribute("google_url", url);
 		
 		return "main";
-	}
+	} 
 	
 	@RequestMapping(value = "/auth/google/callback",
 			method = {RequestMethod.GET ,RequestMethod.POST})

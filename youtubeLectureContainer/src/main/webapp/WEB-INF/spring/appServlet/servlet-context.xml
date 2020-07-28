@@ -32,7 +32,7 @@
 		<beans:constructor-arg value="EqE-nv5w-HNOeN27nH5LGaiK" />	
 	</beans:bean>
 	<beans:bean id ="googleRedirectUrl" class="java.lang.String">
-		<beans:constructor-arg value="https://localhost:3000/auth/google/callback" />	
+		<beans:constructor-arg value="https://localhost:8443/auth/google/callback" />	
 	</beans:bean>
 	<beans:bean id="googleSns" class="youtube.lecture.container.vo.SnsValue">
 		<beans:constructor-arg value="google" />
@@ -47,9 +47,13 @@
 	</beans:bean>
 	<beans:bean id="googleOAuth2Parameters" 
 			class="org.springframework.social.oauth2.OAuth2Parameters">
-			<beans:property name="scope" value="https://www.googleapis.com/auth/plus.login" />
+			<beans:property name="scope" value="https://www.googleapis.com/auth/contacts" />
 			<!-- <beans:property name="scope" value="https://www.googleapis.com/auth/userinfo.email" /> -->
 			<beans:property name="redirectUri" ref="googleRedirectUrl"/>
 	</beans:bean>
+	<beans:bean id="memberController" class="youtube.lecture.container.controller.MemberController">
+	</beans:bean>
+	
+	
 	
 </beans:beans>	

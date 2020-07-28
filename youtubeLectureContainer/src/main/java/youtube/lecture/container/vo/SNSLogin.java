@@ -3,6 +3,8 @@ package youtube.lecture.container.vo;
 import java.io.IOException;
 import java.util.Iterator;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +19,8 @@ public class SNSLogin {
 	private OAuth20Service oauthService;
 	private String profileUrl;
 	private SnsValue sns;
+
+	
 	//Api instanceSetting
 	//scribe Java 
 	public SNSLogin(SnsValue sns) {
@@ -34,30 +38,45 @@ public class SNSLogin {
 		return this.oauthService.getAuthorizationUrl();
 	}
 	
-	public User getUserProfile(String code) throws Exception{
+	public User getUserProfile(String code) throws Exception {
 		OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
-		OAuthRequest request = new OAuthRequest(Verb.GET, this.profileUrl);
+		OAuthRequest request = new OAuthRequest(Verb.GET, this.sns.getProfileUrl());
 		oauthService.signRequest(accessToken, request);
 		Response response = oauthService.execute(request);
 		return parseJson(response.getBody());
 	}
-	private User parseJson(String body) throws JsonProcessingException, IOException {
+
+	private User parseJson(String body) throws Exception {
+		System.out.println("============================\n" + body + "\n==================");
 		User user = new User();
+		
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode rootNode = mapper.readTree(body);
-		String id = rootNode.get("id").asText();
-		String displayNode = rootNode.get("displayName").asText();
-		JsonNode nameNode = rootNode.path("name");
-		String realName = nameNode.get("familyName").asText()+nameNode.get("givenName").asText();
-		//Iterator
-		Iterator<JsonNode> iterEmails = rootNode.path("emails").elements();
 		
-		while(iterEmails.hasNext()) {
-			JsonNode emailNode = iterEmails.next();
-			String email = emailNode.get("value").asText();
-			user.getEmail();
+		if (this.sns.isGoogle()) {
+			String id = rootNode.get("id").asText();
+			if (sns.isGoogle())
+				user.setGoogleid(id);
+			user.setNickname(rootNode.get("displayName").asText());
+			JsonNode nameNode = rootNode.path("name");
+			String uname = nameNode.get("familyName").asText() + nameNode.get("givenName").asText();
+			user.setUname(uname);
+
+			Iterator<JsonNode> iterEmails = rootNode.path("emails").elements();
+			while(iterEmails.hasNext()) {
+				JsonNode emailNode = iterEmails.next();
+				String type = emailNode.get("type").asText();
+				if (StringUtils.equals(type, "account")) {
+					user.setEmail(emailNode.get("value").asText());
+					break;
+				}
+			}
+		} else if (this.sns.isNaver()) {
+			JsonNode resNode = rootNode.get("response");
+			user.setNaverid(resNode.get("id").asText());
+			user.setNickname(resNode.get("nickname").asText());
+			user.setEmail(resNode.get("email").asText());
 		}
-		
 		return user;
 	}
 }

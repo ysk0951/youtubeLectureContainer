@@ -70,8 +70,7 @@ public class HomeController {
 		return "main";
 	} 	
 
-	//https://suzxc2468.tistory.com/151
-	//https://gdtbgl93.tistory.com/74 HTTPS(SSL)적용
+	//https://minwoohi.tistory.com/122?category=833272
 	@RequestMapping(value = "/auth/google/callback", method = { RequestMethod.GET, RequestMethod.POST})
 	public String snsLoginCallback(Model model,@RequestParam String code) throws Exception{
 		

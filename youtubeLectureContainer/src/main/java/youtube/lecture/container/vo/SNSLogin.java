@@ -38,27 +38,30 @@ public class SNSLogin {
 		return this.oauthService.getAuthorizationUrl();
 	}
 	
-	public User getUserProfile(String code) throws Exception{
+	public User getUserProfile(String code) throws Exception {
 		OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
-		OAuthRequest request = new OAuthRequest(Verb.GET, this.profileUrl);
+		OAuthRequest request = new OAuthRequest(Verb.GET, this.sns.getProfileUrl());
 		oauthService.signRequest(accessToken, request);
-		Response response = oauthService.execute(request);	
+		Response response = oauthService.execute(request);
 		return parseJson(response.getBody());
 	}
+
 	private User parseJson(String body) throws Exception {
 		System.out.println("============================\n" + body + "\n==================");
 		User user = new User();
+		
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode rootNode = mapper.readTree(body);
-			if (this.sns.isNaver()) {
+		
+		if (this.sns.isGoogle()) {
 			String id = rootNode.get("id").asText();
-			
 			if (sns.isGoogle())
 				user.setGoogleid(id);
-				user.setNickname(rootNode.get("displayName").asText());
-				JsonNode nameNode = rootNode.path("name");
-				String uname = nameNode.get("familyName").asText() + nameNode.get("givenName").asText();
-				user.setUname(uname);
+			user.setNickname(rootNode.get("displayName").asText());
+			JsonNode nameNode = rootNode.path("name");
+			String uname = nameNode.get("familyName").asText() + nameNode.get("givenName").asText();
+			user.setUname(uname);
+
 			Iterator<JsonNode> iterEmails = rootNode.path("emails").elements();
 			while(iterEmails.hasNext()) {
 				JsonNode emailNode = iterEmails.next();

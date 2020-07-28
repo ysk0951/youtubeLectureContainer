@@ -75,6 +75,7 @@ public class HomeController {
 	@RequestMapping(value = "/auth/google/callback", method = { RequestMethod.GET, RequestMethod.POST})
 	public String snsLoginCallback(Model model,@RequestParam String code) throws Exception{
 		
+		//=====code=====
 		System.out.println("OAUTH2 CODE : "+code);
 		//1. code를 이용해서 access_token 받기
 		// 2. access_token을 이용해서 사용자 profile 정보 가져오기

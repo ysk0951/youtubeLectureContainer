@@ -32,7 +32,7 @@
 		<beans:constructor-arg value="EqE-nv5w-HNOeN27nH5LGaiK" />	
 	</beans:bean>
 	<beans:bean id ="googleRedirectUrl" class="java.lang.String">
-		<beans:constructor-arg value="https://localhost:3000/auth/google/callback" />	
+		<beans:constructor-arg value="https://localhost:8443/auth/google/callback" />	
 	</beans:bean>
 	<beans:bean id="googleSns" class="youtube.lecture.container.vo.SnsValue">
 		<beans:constructor-arg value="google" />
@@ -51,5 +51,4 @@
 			<!-- <beans:property name="scope" value="https://www.googleapis.com/auth/userinfo.email" /> -->
 			<beans:property name="redirectUri" ref="googleRedirectUrl"/>
 	</beans:bean>
-	
 </beans:beans>	

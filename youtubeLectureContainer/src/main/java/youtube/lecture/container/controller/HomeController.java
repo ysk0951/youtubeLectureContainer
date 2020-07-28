@@ -68,9 +68,10 @@ public class HomeController {
 		String url = oauthOperations.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOauth2parameters);
 		model.addAttribute("google_url", url);
 		return "main";
-	} 
+	} 	
 
 	//https://suzxc2468.tistory.com/151
+	//https://gdtbgl93.tistory.com/74 HTTPS(SSL)적용
 	@RequestMapping(value = "/auth/google/callback", method = { RequestMethod.GET, RequestMethod.POST})
 	public String snsLoginCallback(Model model,@RequestParam String code) throws Exception{
 		

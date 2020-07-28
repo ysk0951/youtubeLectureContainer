@@ -51,4 +51,9 @@
 			<!-- <beans:property name="scope" value="https://www.googleapis.com/auth/userinfo.email" /> -->
 			<beans:property name="redirectUri" ref="googleRedirectUrl"/>
 	</beans:bean>
-</beans:beans>	 
+	<beans:bean id="memberController" class="youtube.lecture.container.controller.MemberController">
+	</beans:bean>
+	
+	
+	
+</beans:beans>	

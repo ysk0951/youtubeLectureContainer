@@ -34,7 +34,7 @@ public class HomeController {
 	private OAuth2Parameters googleOauth2parameters;
 	
 	//main
-	@RequestMapping(value = "/", method = {RequestMethod.GET , RequestMethod.POST})
+	@RequestMapping(value = "/", method = { RequestMethod.POST , RequestMethod.GET})
 	public String join(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		logger.info("Setting... YOUTUBE CONTAINER", locale);
@@ -69,9 +69,9 @@ public class HomeController {
 		model.addAttribute("google_url", url);
 		return "main";
 	} 
-	
-	@RequestMapping(value = "/auth/google/callback",
-			method = {RequestMethod.GET ,RequestMethod.POST})
+
+	//https://suzxc2468.tistory.com/151
+	@RequestMapping(value = "/auth/google/callback", method = { RequestMethod.GET, RequestMethod.POST})
 	public String snsLoginCallback(Model model,@RequestParam String code) throws Exception{
 		
 		System.out.println("OAUTH2 CODE : "+code);
@@ -81,10 +81,8 @@ public class HomeController {
 		User snsUser = snsLogin.getUserProfile(code); // 1,2번 동시
 		//3. DB Check
 		//User user = service.getBySns(snsUser);
-		
 		System.out.println("Profile>>" + snsUser);
 		model.addAttribute("result", snsUser.getUname() + "님 반갑습니다.");
-		
 		//4. 강제 로그인
 		return "loginResult";
 	}

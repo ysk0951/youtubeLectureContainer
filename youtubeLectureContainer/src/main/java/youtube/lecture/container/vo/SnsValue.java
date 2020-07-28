@@ -14,6 +14,8 @@ public class SnsValue implements SnsUrls{
 	private String rdirectUrl;
 	private DefaultApi20 api20Instance;
 	private String profileUrl;
+	private boolean isNaver;
+	private boolean isGoogle;
 	
 	public SnsValue(String service, String clientID, String clientSecret, String rdirectUrl) {
 		super();
@@ -21,6 +23,9 @@ public class SnsValue implements SnsUrls{
 		this.clientID = clientID;
 		this.clientSecret = clientSecret;
 		this.rdirectUrl = rdirectUrl;
+		this.isNaver = StringUtils.equalsIgnoreCase("naver", this.service);
+		this.isGoogle = StringUtils.equalsIgnoreCase("google", this.service);
+		
 		if(StringUtils.equalsIgnoreCase(service, "naver")) {
 			this.api20Instance = NaverAPI20.getInstance();
 			this.profileUrl = "";
@@ -28,6 +33,18 @@ public class SnsValue implements SnsUrls{
 			this.api20Instance = GoogleApi20.instance();
 			this.profileUrl = GOOGLE_PROFILE_URL;
 		}
+	}
+	public boolean isNaver() {
+		return isNaver;
+	}
+	public void setNaver(boolean isNaver) {
+		this.isNaver = isNaver;
+	}
+	public boolean isGoogle() {
+		return isGoogle;
+	}
+	public void setGoogle(boolean isGoogle) {
+		this.isGoogle = isGoogle;
 	}
 	public String getService() {
 		return service;
